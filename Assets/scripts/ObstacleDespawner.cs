@@ -18,10 +18,11 @@ public class ObstacleDespawner : MonoBehaviour {
 
 	void Update() {
 		if (collidedObstacleColor != null && collidedObstacleColor.a > 0) {
-			Debug.Log(collidedObstacleColor.a);
 			collidedObstacleColor.a = collidedObstacleColor.a - (Time.deltaTime / FadeTime);
             collidedObstacle.GetComponent<Renderer>().material.color = collidedObstacleColor;
-        } else {
+        } 
+
+		if (collidedObstacle != null && collidedObstacleColor.a == 0) {
             Destroy(collidedObstacle);
         }
 	}

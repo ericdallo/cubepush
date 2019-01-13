@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class BarMovement : MonoBehaviour {
 
+	private Rigidbody barBody;
+	private Vector3 startPosition;
+	public GameObject Destination;
 	public float Speed;
-	public Rigidbody BarBody;
+	
+	void Start() {
+		barBody = GetComponent<Rigidbody>();
+		startPosition = transform.position;
+	}
+	void FixedUpdate () {
+		Vector3 movement = Destination.transform.position - startPosition;
 
-	void FixedUpdate() {
-		var movement = new Vector3(0, 0, -Speed);
-
-		BarBody.MovePosition(BarBody.position  + movement * Time.deltaTime);
+		barBody.MovePosition(barBody.position + movement.normalized * Speed * Time.deltaTime);
 	}
 }
