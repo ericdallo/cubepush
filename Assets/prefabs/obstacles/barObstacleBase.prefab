@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54121754685021682}
   - component: {fileID: 114935748336512460}
   m_Layer: 11
-  m_Name: barObstacle
+  m_Name: barObstacleBase
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

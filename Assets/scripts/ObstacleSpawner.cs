@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour {
+public class ObstacleSpawner : MonoBehaviour, ISpawner {
 
-	public GameObject Obstacle;
+	public List<GameObject> Obstacles;
 	public GameObject DeSpawner;
-	public float SpawnTime;
-	public float SpawnDelay;
 
-	void Start() {
-		InvokeRepeating("SpawnObstacle", SpawnTime, SpawnDelay);
-	}
-
-	void SpawnObstacle() {
+	public GameObject Spawn() {
+		var randomPosition = UnityEngine.Random.Range(0, Obstacles.Count);
+		var Obstacle = Obstacles[randomPosition];
+		
 		Obstacle.GetComponent<BarMovement>().Destination = DeSpawner;
-		Instantiate(Obstacle, transform.position, transform.rotation);
-	}
+		var spawnedObstacle = Instantiate(Obstacle, transform.position, transform.rotation);
+		DeSpawner.GetComponent<ObstacleDespawner>().AddAcceptColliders(spawnedObstacle.GetInstanceID());
+
+		return spawnedObstacle;
+	}	
 
 }

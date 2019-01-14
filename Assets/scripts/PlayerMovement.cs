@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour {
 	public Rigidbody PlayerBody;
 	public float Speed = 60f;
 	public float MaxSpeed = 5f;
-	public float JumpForce = 8f;
 
 	void Update() {
 		if (PlayerBody.position.y < -1f) {
@@ -39,12 +38,6 @@ public class PlayerMovement : MonoBehaviour {
 			Vector3 newVelocity = PlayerBody.velocity.normalized * MaxSpeed;
 			newVelocity.y = fallVelocity;
 			PlayerBody.velocity = newVelocity;
-		}
-
-		bool isPlayerOnGround = Physics.Raycast(transform.position, new Vector2(0, -1), 1f, LayerMask.GetMask("Ground"));
-
-		if (Input.GetButtonDown("Jump") && isPlayerOnGround) {
-			PlayerBody.AddForce(Vector2.up * JumpForce, ForceMode.VelocityChange);
 		}
 	}
 	

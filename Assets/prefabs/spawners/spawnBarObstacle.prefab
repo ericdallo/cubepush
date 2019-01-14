@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef100669f86ad45169d21d70a0d59f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacle: {fileID: 1054070918386830, guid: f8cd70fed6cc14e2a932e81bbfb2f504, type: 2}
-  SpawnTime: 0
-  SpawnDelay: 0
-  XSpeed: 0
-  ZSpeed: 0
+  Obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  DeSpawner: {fileID: 0}

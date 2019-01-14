@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	private bool hasGameEnded = false;
-	public float restartDelay = 0.5f;
+	public float RestartDelay;
 
 	public void GameOver() {
 		if (!hasGameEnded) {
 			hasGameEnded = true;
-			Invoke("Restart", restartDelay);
+			Invoke("Restart", RestartDelay);
 		}
 	}
 
