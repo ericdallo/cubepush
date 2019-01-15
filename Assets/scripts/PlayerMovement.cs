@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+	public Joystick Joystick;
+	public float JoystickSpeed;
 	public Rigidbody PlayerBody;
-	public float Speed = 60f;
-	public float MaxSpeed = 5f;
+	public float Speed;
+	public float MaxSpeed;
 
 	void Update() {
 		if (PlayerBody.position.y < -1f) {
@@ -15,8 +17,8 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+		float moveHorizontal = Input.GetAxis("Horizontal") + (Joystick.Horizontal * JoystickSpeed);
+        float moveVertical = Input.GetAxis("Vertical") + (Joystick.Vertical * JoystickSpeed);
 
 		Camera camera = Camera.main;
 
