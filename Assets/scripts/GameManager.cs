@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
 	public void Play() {
 		Time.timeScale = 1;
-		GamePadUI.SetActive(true);
+		GamePadUI.GetComponent<Fader>().FadeIn();
 		scoreManager.Show();
 		gameStarted = true;
 	}
