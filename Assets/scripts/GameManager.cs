@@ -6,20 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	private bool hasGameEnded = false;
+	private bool gameStarted = false;
 	public float RestartDelay;
 	public GameObject GamePad;
-	public GameObject Menu;
 
 	void Awake() {
 		Time.timeScale = 0;
-	}
-
-	void Update() {
-		if (Input.touchCount > 0 || Input.GetMouseButtonDown(0)) {
-			GamePad.SetActive(true);
-			Menu.GetComponent<Menu>().Play();
-			Time.timeScale = 1;
-		}
+		gameStarted = false;
 	}
 
 	public void GameOver() {
@@ -29,7 +22,17 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void Play() {
+		Time.timeScale = 1;
+		GamePad.SetActive(true);
+		gameStarted = true;
+	}
+
 	void Restart() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public bool HasGameStarted() {
+		return gameStarted;
 	}
 }
