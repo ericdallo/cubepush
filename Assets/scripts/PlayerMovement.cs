@@ -9,22 +9,23 @@ public class PlayerMovement : MonoBehaviour {
 	public Rigidbody PlayerBody;
 	public float Speed;
 	public float MaxSpeed;
-    private GameManager gameManager;
 	private Camera mainCamera;
 
     void Start() {
-		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
 		mainCamera = Camera.main;
 	}
 
 	void Update() {
 		if (PlayerBody.position.y < -1f) {
-			gameManager.GameOver();
+			GameManager.Get().GameOver();
 		}
 	}
 	
 	void FixedUpdate () {
+		if (!GameManager.Get().HasGameStarted()) {
+			return;
+		}
+
 		float moveHorizontal = Input.GetAxis("Horizontal") + (Joystick.Horizontal * JoystickSpeed);
         float moveVertical = Input.GetAxis("Vertical") + (Joystick.Vertical * JoystickSpeed);
 

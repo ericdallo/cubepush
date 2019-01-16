@@ -11,8 +11,17 @@ public class GameManager : MonoBehaviour {
 	public GameObject GamePadUI;
 	private ScoreManager scoreManager;
 
+	private static GameManager reference;
+
+	public static GameManager Get() {
+		if (reference == null) {
+			reference = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();	
+		}
+
+		return reference;
+	}
+
 	void Awake() {
-		Time.timeScale = 0;
 		gameStarted = false;
 		scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 	}
@@ -25,10 +34,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Play() {
-		Time.timeScale = 1;
+		gameStarted = true;
 		GamePadUI.GetComponent<Fader>().FadeIn();
 		scoreManager.Show();
-		gameStarted = true;
 	}
 
 	void Restart() {

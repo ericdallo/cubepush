@@ -7,10 +7,20 @@ public class SpawnManager : MonoBehaviour {
 	public float SpawnTime;
 	public float SpawnDelay;
 	private GameObject[] spawners;
-	
-	void Start () {
+	private bool isSpawing = false;
+    private GameManager gameManager;
+
+    void Start () {
 		spawners = GameObject.FindGameObjectsWithTag("Spawner");
-		InvokeRepeating("SpawnObstacle", SpawnTime, SpawnDelay);
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+	}
+
+	void Update() {
+		if (!isSpawing && gameManager.HasGameStarted()) {
+			isSpawing = true;
+
+			InvokeRepeating("SpawnObstacle", SpawnTime, SpawnDelay);
+		}
 	}
 
 	void SpawnObstacle() {
