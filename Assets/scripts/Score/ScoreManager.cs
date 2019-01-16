@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
 
-    public float FadeSpeed;
     public int CurrentLevel = 1;
     public GameObject ScoreUI;
-    private TextMesh currentLevelText;
-    private bool fadeIn = false;
-    private CanvasGroup scoreUIRenderer;
+    private TMPro.TextMeshProUGUI currentLevelText;
 
     void Start() {
-        currentLevelText = ScoreUI.transform.Find("CurrentLevel").GetComponent<TextMesh>();
-        scoreUIRenderer = ScoreUI.GetComponent<CanvasGroup>();
+        currentLevelText = ScoreUI.transform.Find("CurrentLevel").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     public void NextLevel() {

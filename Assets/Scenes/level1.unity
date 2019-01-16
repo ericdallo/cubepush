@@ -316,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005969d4d63a4e0708cc439da529ddd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeSpeed: 10
   CurrentLevel: 1
   ScoreUI: {fileID: 2107886441}
 --- !u!1 &263550505
@@ -1755,6 +1754,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1152384633}
   - component: {fileID: 1152384634}
+  - component: {fileID: 1152384635}
+  - component: {fileID: 1152384636}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1794,6 +1795,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ef61d0edd5171b8b9f9d3afa6821449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1152384635
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152384632}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1152384636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152384632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86300063f3f2e78b28e308abc8177532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FadeSpeed: 10
@@ -1844,7 +1869,7 @@ CanvasGroup:
   m_GameObject: {fileID: 1255284281}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &1255284284
