@@ -9,6 +9,8 @@ TagManager:
   - Spawner
   - ObstacleParent
   - GameManager
+  - ScoreManager
+  - MovementJoystick
   layers:
   - Default
   - TransparentFX

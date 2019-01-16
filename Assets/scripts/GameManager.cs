@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour {
 	private bool hasGameEnded = false;
 	private bool gameStarted = false;
 	public float RestartDelay;
-	public GameObject GamePad;
+	public GameObject GamePadUI;
+	private ScoreManager scoreManager;
 
 	void Awake() {
 		Time.timeScale = 0;
 		gameStarted = false;
+		scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 	}
 
 	public void GameOver() {
@@ -24,7 +26,8 @@ public class GameManager : MonoBehaviour {
 
 	public void Play() {
 		Time.timeScale = 1;
-		GamePad.SetActive(true);
+		GamePadUI.SetActive(true);
+		scoreManager.Show();
 		gameStarted = true;
 	}
 
