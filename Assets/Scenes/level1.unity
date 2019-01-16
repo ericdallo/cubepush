@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256349484}
   - component: {fileID: 256349483}
+  - component: {fileID: 256349485}
   m_Layer: 0
   m_Name: toptSpawnBarObstacle
   m_TagString: Spawner
@@ -530,14 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef100669f86ad45169d21d70a0d59f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 1179877779629360, guid: a410b7776a0614ea7a827f85da6dfa12, type: 3}
-  - {fileID: 1602464881585270, guid: a826e32dd6a6c49469b46cd724e70a53, type: 3}
-  - {fileID: 1070950942627116, guid: efb8619b057f94d42b807a862df8f08d, type: 3}
-  - {fileID: 1228739790747628, guid: 4ced6e2678bad4e86bbf3e0666bef07d, type: 3}
-  - {fileID: 1546285819265078, guid: 3fa33a7d986114f3c9960f1d52a47661, type: 3}
-  - {fileID: 1931359023884006, guid: e8055068f18ad4f44a2e6f28384a39b8, type: 3}
-  - {fileID: 1349095126605412, guid: 58ebf1044368947f093c06a1870bda1d, type: 3}
   DeSpawner: {fileID: 812855192}
 --- !u!4 &256349484
 Transform:
@@ -554,6 +547,19 @@ Transform:
   m_Father: {fileID: 861656618}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &256349485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256349482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6ebfafbbe4a58289f92a271e92acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gap: 2
 --- !u!1 &263550505
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346201438}
   - component: {fileID: 346201437}
+  - component: {fileID: 346201439}
   m_Layer: 0
   m_Name: rightSpawnBarObstacle
   m_TagString: Spawner
@@ -724,9 +731,8 @@ GameObject:
 --- !u!114 &346201437
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114806391265366214, guid: 3ac306d61335f4ac79cb75f726c7af0c,
-    type: 2}
-  m_PrefabInstance: {fileID: 1620971698}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346201436}
   m_Enabled: 1
@@ -734,14 +740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef100669f86ad45169d21d70a0d59f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 1179877779629360, guid: a410b7776a0614ea7a827f85da6dfa12, type: 3}
-  - {fileID: 1602464881585270, guid: a826e32dd6a6c49469b46cd724e70a53, type: 3}
-  - {fileID: 1070950942627116, guid: efb8619b057f94d42b807a862df8f08d, type: 3}
-  - {fileID: 1228739790747628, guid: 4ced6e2678bad4e86bbf3e0666bef07d, type: 3}
-  - {fileID: 1546285819265078, guid: 3fa33a7d986114f3c9960f1d52a47661, type: 3}
-  - {fileID: 1931359023884006, guid: e8055068f18ad4f44a2e6f28384a39b8, type: 3}
-  - {fileID: 1349095126605412, guid: 58ebf1044368947f093c06a1870bda1d, type: 3}
   DeSpawner: {fileID: 1690731168}
 --- !u!4 &346201438
 Transform:
@@ -758,6 +756,19 @@ Transform:
   m_Father: {fileID: 861656618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &346201439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346201436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6ebfafbbe4a58289f92a271e92acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gap: 2
 --- !u!224 &359883128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224070147403872398, guid: ce5089f3caa5bb042a4d4c23a427bc82,
@@ -1204,7 +1215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 861656618}
   m_Layer: 10
-  m_Name: spawn
+  m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1244,6 +1255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932623139}
   - component: {fileID: 932623138}
+  - component: {fileID: 932623140}
   m_Layer: 0
   m_Name: bottomSpawnBarObstacle
   m_TagString: Spawner
@@ -1264,14 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef100669f86ad45169d21d70a0d59f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 1179877779629360, guid: a410b7776a0614ea7a827f85da6dfa12, type: 3}
-  - {fileID: 1602464881585270, guid: a826e32dd6a6c49469b46cd724e70a53, type: 3}
-  - {fileID: 1070950942627116, guid: efb8619b057f94d42b807a862df8f08d, type: 3}
-  - {fileID: 1228739790747628, guid: 4ced6e2678bad4e86bbf3e0666bef07d, type: 3}
-  - {fileID: 1546285819265078, guid: 3fa33a7d986114f3c9960f1d52a47661, type: 3}
-  - {fileID: 1931359023884006, guid: e8055068f18ad4f44a2e6f28384a39b8, type: 3}
-  - {fileID: 1349095126605412, guid: 58ebf1044368947f093c06a1870bda1d, type: 3}
   DeSpawner: {fileID: 1274521398}
 --- !u!4 &932623139
 Transform:
@@ -1288,6 +1292,19 @@ Transform:
   m_Father: {fileID: 861656618}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -181.21399, z: 0}
+--- !u!114 &932623140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932623137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6ebfafbbe4a58289f92a271e92acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gap: 2
 --- !u!1001 &935323922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2055,6 +2072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1484026710}
   - component: {fileID: 1484026709}
+  - component: {fileID: 1484026711}
   m_Layer: 0
   m_Name: leftSpawnBarObstacle
   m_TagString: Spawner
@@ -2075,14 +2093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef100669f86ad45169d21d70a0d59f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 1179877779629360, guid: a410b7776a0614ea7a827f85da6dfa12, type: 3}
-  - {fileID: 1602464881585270, guid: a826e32dd6a6c49469b46cd724e70a53, type: 3}
-  - {fileID: 1070950942627116, guid: efb8619b057f94d42b807a862df8f08d, type: 3}
-  - {fileID: 1228739790747628, guid: 4ced6e2678bad4e86bbf3e0666bef07d, type: 3}
-  - {fileID: 1546285819265078, guid: 3fa33a7d986114f3c9960f1d52a47661, type: 3}
-  - {fileID: 1931359023884006, guid: e8055068f18ad4f44a2e6f28384a39b8, type: 3}
-  - {fileID: 1349095126605412, guid: 58ebf1044368947f093c06a1870bda1d, type: 3}
   DeSpawner: {fileID: 1753031357}
 --- !u!4 &1484026710
 Transform:
@@ -2099,6 +2109,19 @@ Transform:
   m_Father: {fileID: 861656618}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1484026711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484026708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6ebfafbbe4a58289f92a271e92acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gap: 2
 --- !u!1001 &1620971698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2159,7 +2182,8 @@ PrefabInstance:
       propertyPath: DeSpawner
       value: 
       objectReference: {fileID: 1690731168}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3ac306d61335f4ac79cb75f726c7af0c, type: 2}
 --- !u!1001 &1667041719
 PrefabInstance:

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleDespawner : MonoBehaviour {
+public class BarObstacleDespawner : MonoBehaviour {
 
 	public float FadeTime;
 	public GameObject Spawner;
