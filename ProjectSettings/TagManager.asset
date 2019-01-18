@@ -11,6 +11,7 @@ TagManager:
   - GameManager
   - ScoreManager
   - MovementJoystick
+  - AudioManager
   layers:
   - Default
   - TransparentFX

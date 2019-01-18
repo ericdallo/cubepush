@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public void NextLevel() {
+        AudioManager.Get().Play("LevelUp");
         CurrentLevel += 1;
         currentLevelText.text = "" + CurrentLevel;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Joystick Joystick;
+	private Joystick joystick;
 	public float JoystickSpeed;
 	public Rigidbody PlayerBody;
 	public float Speed;
@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start() {
 		mainCamera = Camera.main;
+		joystick = GameObject.FindGameObjectWithTag("MovementJoystick").GetComponent<Joystick>();
 	}
 
 	void Update() {
@@ -26,8 +27,8 @@ public class PlayerMovement : MonoBehaviour {
 			return;
 		}
 
-		float moveHorizontal = Input.GetAxis("Horizontal") + (Joystick.Horizontal * JoystickSpeed);
-        float moveVertical = Input.GetAxis("Vertical") + (Joystick.Vertical * JoystickSpeed);
+		float moveHorizontal = Input.GetAxis("Horizontal") + (joystick.Horizontal * JoystickSpeed);
+        float moveVertical = Input.GetAxis("Vertical") + (joystick.Vertical * JoystickSpeed);
 
 		Vector3 forward = mainCamera.transform.forward;
         Vector3 right = mainCamera.transform.right;

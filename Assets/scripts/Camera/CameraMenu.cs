@@ -37,10 +37,8 @@ public class CameraMenu : MonoBehaviour {
             float differenceBetweenDefaultRotation;
             
             if (transform.localEulerAngles.y >= 180 + DEFAULT_ROTATION_Y) {
-                Debug.Log("esquerda");
                 differenceBetweenDefaultRotation = newRotation;
             } else {
-                Debug.Log("direita");
                 differenceBetweenDefaultRotation = -newRotation;
             }
 
@@ -53,7 +51,6 @@ public class CameraMenu : MonoBehaviour {
             transform.LookAt(Vector3.zero);
             
             if (-DifferenceGap <= differenceBetweenDefaultRotation && differenceBetweenDefaultRotation <= DifferenceGap) {
-                Debug.Log("acabou");
                 isInDefaultPosition = true;
             }
         }
