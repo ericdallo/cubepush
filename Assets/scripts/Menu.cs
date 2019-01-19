@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour {
 
     private GameObject title;
     private GameObject playButtom;
-    private GameManager gameManager;
     private Fader fader;
 
     void Start() {
         title = GameObject.Find("Title");
         playButtom = GameObject.Find("PlayButton");
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         fader = GetComponent<Fader>();
     }
 
@@ -25,10 +23,9 @@ public class Menu : MonoBehaviour {
         }
 
     }
-
     public void Play() {
         playButtom.GetComponent<Button>().interactable = false;
         fader.FadeOut();
-        gameManager.Play();
+        GameManager.Get().Play();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour {
     private const int MORNING = 21600;
     private const int MIDDAY = 43200;
-    private const int NIGHT_START = 68000;
+    private const int NIGHT_START = 67000;
     private const int NIGHT_GAP = 4000;
     private const int MIDNIGHT = 86400;
     public float Time;

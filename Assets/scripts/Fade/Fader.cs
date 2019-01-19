@@ -24,7 +24,6 @@ public class Fader : MonoBehaviour {
             fadeObjectCanvas.alpha = newAlpha;
 
             if (fadeObjectCanvas.alpha >= 1) {
-                gameObject.SetActive(true);
                 fadeIn = false;
             }
         }
@@ -43,6 +42,7 @@ public class Fader : MonoBehaviour {
     }
 
     public void FadeIn() {
+        gameObject.SetActive(true);
         fadeIn = true;
     }
 

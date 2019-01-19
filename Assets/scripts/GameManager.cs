@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour {
 
 	private bool hasGameEnded = false;
 	private bool gameStarted = false;
-	public float RestartDelay;
+	public float GameOverDelay;
 	public GameObject GamePadUI;
+	public GameObject GameOverUI;
 	private ScoreManager scoreManager;
-
-	private static GameManager reference;
+    private GameObject player;
+    private static GameManager reference;
 
 	public static GameManager Get() {
 		if (reference == null) {
@@ -24,12 +25,13 @@ public class GameManager : MonoBehaviour {
 	void Awake() {
 		gameStarted = false;
 		scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	public void GameOver() {
 		if (!hasGameEnded) {
 			hasGameEnded = true;
-			Invoke("Restart", RestartDelay);
+			Invoke("ShowGameOverUI", GameOverDelay);
 		}
 	}
 
@@ -39,11 +41,21 @@ public class GameManager : MonoBehaviour {
 		scoreManager.Show();
 	}
 
-	void Restart() {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	void ShowGameOverUI() {
+		GameOverUI.GetComponent<Fader>().FadeIn();
+		GamePadUI.GetComponent<Fader>().FadeOut();
+		Invoke("DestroyPlayer", 3);
 	}
 
 	public bool HasGameStarted() {
 		return gameStarted;
+	}
+
+	public void DestroyPlayer() {
+		Destroy(player);
+	}
+
+	public void Retry() {
+		scoreManager.CurrentLevel = 1;
 	}
 }
