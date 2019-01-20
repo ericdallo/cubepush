@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +11,10 @@ public class GameManager : MonoBehaviour {
 	public float GameOverDelay;
 	public GameObject GamePadUI;
 	public GameObject GameOverUI;
-	private ScoreManager scoreManager;
+	public GameObject PlayerPrefab;
     private GameObject player;
     private static GameManager reference;
+	private Transform playerRespawn;
 
 	public static GameManager Get() {
 		if (reference == null) {
@@ -24,38 +26,40 @@ public class GameManager : MonoBehaviour {
 
 	void Awake() {
 		gameStarted = false;
-		scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		playerRespawn = GameObject.FindGameObjectWithTag("Respawn").transform;
 	}
 
 	public void GameOver() {
-		if (!hasGameEnded) {
-			hasGameEnded = true;
-			Invoke("ShowGameOverUI", GameOverDelay);
-		}
+		hasGameEnded = true;
+		player.GetComponent<PlayerMovement>().Die();
+		Invoke("ShowGameOverUI", GameOverDelay);
 	}
 
-	public void Play() {
+    public bool IsGameOver() {
+        return hasGameEnded;
+    }
+
+    public void Play() {
 		gameStarted = true;
 		GamePadUI.GetComponent<Fader>().FadeIn();
-		scoreManager.Show();
+		ScoreManager.Get().Show();
 	}
 
 	void ShowGameOverUI() {
 		GameOverUI.GetComponent<Fader>().FadeIn();
 		GamePadUI.GetComponent<Fader>().FadeOut();
-		Invoke("DestroyPlayer", 3);
 	}
 
 	public bool HasGameStarted() {
 		return gameStarted;
 	}
 
-	public void DestroyPlayer() {
-		Destroy(player);
-	}
-
 	public void Retry() {
-		scoreManager.CurrentLevel = 1;
+		ScoreManager.Get().ResetLevel();
+		SpawnManager.Get().ResetSpawn();
+		GamePadUI.GetComponent<Fader>().FadeIn();
+		this.player = Instantiate(PlayerPrefab, playerRespawn.position, playerRespawn.rotation);
+		hasGameEnded = false;
 	}
 }

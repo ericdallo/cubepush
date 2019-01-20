@@ -6,30 +6,44 @@ public class BarObstacleSpawner : MonoBehaviour, ISpawner {
 
 	private BarObstacleFactory obstacleFactory;
 	public GameObject DeSpawner;
-    private float BarScoreLeveleMultiplier = 0.03f;
+    private float barScoreLeveleMultiplier = 0.03f;
 
     void Start() {
 		obstacleFactory = GetComponent<BarObstacleFactory>();
 	}
 
 	public GameObject Spawn() {
-		var Obstacle = obstacleFactory.Build();
+		var obstacle = obstacleFactory.Build();
 		
-		Obstacle.GetComponent<BarMovement>().Destination = DeSpawner;
+		var spawnedObstacle = Instantiate(obstacle, transform.position, transform.rotation);
+		var spawnedObstacleMovement = spawnedObstacle.GetComponent<BarMovement>();
 
-		Obstacle.GetComponent<BarMovement>().Speed += calculateSpeed();
-		var spawnedObstacle = Instantiate(Obstacle, transform.position, transform.rotation);
+		spawnedObstacleMovement.Destination = DeSpawner;
+		changeSpeed(spawnedObstacleMovement);
+
 		DeSpawner.GetComponent<BarObstacleDespawner>().AddAcceptColliders(spawnedObstacle.GetInstanceID());
 
 		return spawnedObstacle;
 	}
 
-	private float calculateSpeed() {
-		if (ScoreManager.Get().CurrentLevel % 2 == 0) {
-			return 0;
+	private void changeSpeed(BarMovement spawnedObstacleMovement) {
+		float lastBarSpeed = SpawnManager.Get().BarSpeed;
+
+		if (GameManager.Get().IsGameOver()) {
+			spawnedObstacleMovement.Speed = lastBarSpeed;
+			return;
 		}
 
-		return ScoreManager.Get().CurrentLevel * BarScoreLeveleMultiplier;
+		if (ScoreManager.Get().GetCurrentLevel() % 2 == 0) {
+			spawnedObstacleMovement.Speed = lastBarSpeed;
+			return;
+		}
+
+		SpawnManager.Get().BarSpeed = spawnedObstacleMovement.Speed + (ScoreManager.Get().GetCurrentLevel() * barScoreLeveleMultiplier);
+
+		lastBarSpeed = SpawnManager.Get().BarSpeed;
+
+		spawnedObstacleMovement.Speed = lastBarSpeed;
 	}
 
 }

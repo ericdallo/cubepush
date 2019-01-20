@@ -15,7 +15,7 @@ public class ScoreCollider : MonoBehaviour {
 		if (!hasScored && collision.gameObject.tag == "Player") {
             hasScored = true;
 
-			scoreManager.NextLevel();
+            scoreManager.NextLevel();
 		}
 	}
 

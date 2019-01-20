@@ -5,15 +5,15 @@ using UnityEngine;
 public class BarObstacleFactory : MonoBehaviour {
 
     private const float BAR_SIZE = 10;
-    private GameObject BaseBar;
+    private GameObject baseBar;
     private Transform LeftTransform;
     private Transform RightTransform;
     public float Gap = 2;
 
     void Start() {
-        BaseBar = (GameObject) Resources.Load("prefabs/obstacles/barObstacleBase", typeof(GameObject));
-        LeftTransform = BaseBar.GetComponentInChildren<Transform>().Find("Left");
-        RightTransform = BaseBar.GetComponentInChildren<Transform>().Find("Right");
+        baseBar = (GameObject) Resources.Load("prefabs/obstacles/barObstacleBase", typeof(GameObject));
+        LeftTransform = baseBar.GetComponentInChildren<Transform>().Find("Left");
+        RightTransform = baseBar.GetComponentInChildren<Transform>().Find("Right");
     }
 
     public GameObject Build() {
@@ -29,6 +29,6 @@ public class BarObstacleFactory : MonoBehaviour {
         RightTransform.localScale = new Vector3(rightScaleX, RightTransform.localScale.y, RightTransform.localScale.z);
         RightTransform.position = new Vector3(rightPositionX, RightTransform.position.y, RightTransform.position.z);
         
-        return BaseBar;
+        return baseBar;
     }
 }

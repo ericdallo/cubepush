@@ -12,6 +12,7 @@ TagManager:
   - ScoreManager
   - MovementJoystick
   - AudioManager
+  - SpawnManager
   layers:
   - Default
   - TransparentFX

@@ -5,19 +5,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	private Joystick joystick;
-	public float JoystickSpeed;
-	public Rigidbody PlayerBody;
+	private Camera mainCamera;
+	private Rigidbody playerBody;
 	public float Speed;
 	public float MaxSpeed;
-	private Camera mainCamera;
+	public float JoystickSpeed;
+    private bool dead = false;
 
     void Start() {
 		mainCamera = Camera.main;
+		playerBody = GetComponent<Rigidbody>();
 		joystick = GameObject.FindGameObjectWithTag("MovementJoystick").GetComponent<Joystick>();
 	}
 
 	void Update() {
-		if (PlayerBody.position.y < -1f) {
+		if (dead) {
+			return;
+		}
+
+		if (playerBody.position.y < -1f && !GameManager.Get().IsGameOver()) {
 			GameManager.Get().GameOver();
 		}
 	}
@@ -40,15 +46,24 @@ public class PlayerMovement : MonoBehaviour {
 
 		Vector3  movement = forward * moveVertical + right * moveHorizontal;
 
-		PlayerBody.AddForce(movement * Speed * Time.deltaTime, ForceMode.VelocityChange);
+		playerBody.AddForce(movement * Speed * Time.deltaTime, ForceMode.VelocityChange);
 
-		float fallVelocity = PlayerBody.velocity.y;
+		float fallVelocity = playerBody.velocity.y;
 
- 		if (PlayerBody.velocity.magnitude > MaxSpeed) {
-			Vector3 newVelocity = PlayerBody.velocity.normalized * MaxSpeed;
+ 		if (playerBody.velocity.magnitude > MaxSpeed) {
+			Vector3 newVelocity = playerBody.velocity.normalized * MaxSpeed;
 			newVelocity.y = fallVelocity;
-			PlayerBody.velocity = newVelocity;
+			playerBody.velocity = newVelocity;
 		}
+	}
+
+	public void Die() {
+		dead = true;
+		Invoke("destroyPlayer", 3);
+	}
+
+	private void destroyPlayer() {
+		Destroy(gameObject);
 	}
 	
 }

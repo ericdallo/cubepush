@@ -7,25 +7,42 @@ public class SpawnManager : MonoBehaviour {
 	public float SpawnTime;
 	public float SpawnDelay;
 	private GameObject[] spawners;
-	private bool isSpawing = false;
-    private GameManager gameManager;
+	private bool shouldSpawn = true;
+	public float BarSpeed = 4;
+
+	private static SpawnManager reference;
+
+	public static SpawnManager Get() {
+		if (reference == null) {
+			reference = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+		}
+		
+		return reference;
+	}
 
     void Start () {
 		spawners = GameObject.FindGameObjectsWithTag("Spawner");
-		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 	}
 
 	void Update() {
-		if (!isSpawing && gameManager.HasGameStarted()) {
-			isSpawing = true;
+		if (shouldSpawn && GameManager.Get().HasGameStarted()) {
+			shouldSpawn = false;
 
-			InvokeRepeating("SpawnObstacle", SpawnTime, SpawnDelay);
+			InvokeRepeating("spawnObstacle", SpawnTime, SpawnDelay);
 		}
 	}
 
-	void SpawnObstacle() {
+	public void ResetSpawn() {
+		CancelInvoke("spawnObstacle");
+		Invoke("startSpawn", 3);
+	}
+	private void spawnObstacle() {
 		var spawner = spawners[Random.Range(0, spawners.Length)];
 
 		spawner.GetComponent<ISpawner>().Spawn();
+	}
+
+	private void startSpawn() {
+		shouldSpawn = true;
 	}
 }
