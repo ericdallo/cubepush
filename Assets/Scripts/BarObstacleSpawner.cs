@@ -13,9 +13,11 @@ public class BarObstacleSpawner : MonoBehaviour, ISpawner {
 	}
 
 	public GameObject Spawn() {
-		var obstacle = obstacleFactory.Build();
+		var spawnedObstacle = obstacleFactory.Build();
+
+		spawnedObstacle.transform.position = transform.position;
+		spawnedObstacle.transform.rotation = transform.rotation;
 		
-		var spawnedObstacle = Instantiate(obstacle, transform.position, transform.rotation);
 		var spawnedObstacleMovement = spawnedObstacle.GetComponent<BarMovement>();
 
 		spawnedObstacleMovement.Destination = DeSpawner;
