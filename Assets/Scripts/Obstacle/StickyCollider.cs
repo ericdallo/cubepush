@@ -5,10 +5,10 @@ using UnityEngine;
 public class StickyCollider : MonoBehaviour {
 
     private FixedJoint joint;
-    public float StickTime = 1;
+    public float StickTime = 0.5f;
     private bool canStick = true;
-    public Color StartColor;
     public Color UnstickColor;
+    public Color StartColor;
     private MeshRenderer[] meshs;
     private float lerpTime = 0;
 

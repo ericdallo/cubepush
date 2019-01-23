@@ -36,12 +36,12 @@ public class BarObstacleSpawner : MonoBehaviour, ISpawner {
 			return;
 		}
 
-		if (ScoreManager.Get().GetCurrentLevel() % 2 == 0) {
+		if (ScoreManager.Instance.GetCurrentLevel() % 2 == 0) {
 			spawnedObstacleMovement.Speed = lastBarSpeed;
 			return;
 		}
 
-		SpawnManager.Get().BarSpeed = spawnedObstacleMovement.Speed + (ScoreManager.Get().GetCurrentLevel() * barScoreLeveleMultiplier);
+		SpawnManager.Get().BarSpeed = spawnedObstacleMovement.Speed + (ScoreManager.Instance.GetCurrentLevel() * barScoreLeveleMultiplier);
 
 		lastBarSpeed = SpawnManager.Get().BarSpeed;
 

@@ -9,23 +9,21 @@ public class ScoreManager : MonoBehaviour {
     private int currentLevel;
     public GameObject ScoreUI;
     private TMPro.TextMeshProUGUI currentLevelText;
-    private static ScoreManager reference;
+
+    #region Singleton
+    public static ScoreManager Instance;
+    private void Awake() {
+        Instance = this;
+    }
+    #endregion
 
     void Start() {
         currentLevelText = ScoreUI.transform.Find("CurrentLevel").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         currentLevel = StartLevel;
     }
 
-    public static ScoreManager Get() {
-        if (reference == null) {
-            reference = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
-        }
-
-        return reference;
-    }
-
     public int NextLevel() {
-        AudioManager.Get().Play("LevelUp");
+        AudioManager.Instance.Play("LevelUp");
         currentLevel += 1;
         updateUI();
 
@@ -45,7 +43,13 @@ public class ScoreManager : MonoBehaviour {
         updateUI();
     }
 
+    public void SaveHighScore() {
+        if (PlayerPrefs.GetInt("HighScore", 0) < currentLevel) {
+            PlayerPrefs.SetInt("HighScore", currentLevel);
+        }
+    }
+
     private void updateUI() {
-        currentLevelText.text = "" + currentLevel;
+        currentLevelText.text = currentLevel.ToString();
     }
 }

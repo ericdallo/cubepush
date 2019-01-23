@@ -8,15 +8,13 @@ public class AudioManager : MonoBehaviour {
 
     private static AudioManager reference;
 
-    public static AudioManager Get() {
-		if (reference == null) {
-			reference = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();	
-		}
-
-		return reference;
-	}
+    #region Singleton
+    public static AudioManager Instance;
+    #endregion
 
     void Awake() {
+        Instance = this;
+        
         foreach(Sound sound in Sounds) {
             sound.Source = gameObject.AddComponent<AudioSource>();
             sound.Source.clip = sound.Clip;

@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3224e49762d197d9cb51fc7b558139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StickTime: 1
-  StartColor: {r: 1, g: 0.21960784, b: 0.21960784, a: 1}
-  UnstickColor: {r: 0.27058825, g: 0, b: 0.77254903, a: 1}
+  StickTime: 0.5
+  UnstickColor: {r: 1, g: 0.21960784, b: 0.21960784, a: 1}
+  StartColor: {r: 0.27058825, g: 0, b: 0.77254903, a: 1}
 --- !u!54 &8348734423091004156
 Rigidbody:
   m_ObjectHideFlags: 0

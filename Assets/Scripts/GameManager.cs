@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
 	public void GameOver() {
 		hasGameEnded = true;
 		player.GetComponent<PlayerMovement>().Die();
+		ScoreManager.Instance.SaveHighScore();
+
 		Invoke("ShowGameOverUI", GameOverDelay);
 	}
 
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour {
     public void Play() {
 		gameStarted = true;
 		GamePadUI.GetComponent<Fader>().FadeIn();
-		ScoreManager.Get().Show();
+		ScoreManager.Instance.Show();
 	}
 
 	void ShowGameOverUI() {
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Retry() {
-		ScoreManager.Get().ResetLevel();
+		ScoreManager.Instance.ResetLevel();
 		SpawnManager.Get().ResetSpawn();
 		GamePadUI.GetComponent<Fader>().FadeIn();
 		this.player = Instantiate(PlayerPrefab, playerRespawn.position, playerRespawn.rotation);

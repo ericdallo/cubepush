@@ -6,7 +6,7 @@ public class BarObstacleDespawner : MonoBehaviour {
 
 	public float FadeTime;
 	public GameObject Spawner;
-	private GameObject collidedObstacle;
+	private GameObject  collidedObstacle;
 	private Color collidedObstacleColor;
 	private List<int> acceptedColliders = new List<int>();
 	
@@ -21,6 +21,7 @@ public class BarObstacleDespawner : MonoBehaviour {
 
 	void Update() {
 		if (collidedObstacle != null && collidedObstacleColor.a > 0) {
+			
 
 			foreach(Renderer childRend in collidedObstacle.GetComponentsInChildren<Renderer>() ){
 			

@@ -346,7 +346,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219478209}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -1436,7 +1436,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 762608639}
   m_OnClick:
     m_PersistentCalls:
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   intensity: 0
   Fogday: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   FogNight: {r: 0, g: 0, b: 0, a: 1}
-  Speed: 800
+  Speed: 500
 --- !u!1001 &1433885215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3066,7 +3066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1913981541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3124,7 +3124,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &2002794015
 GameObject:

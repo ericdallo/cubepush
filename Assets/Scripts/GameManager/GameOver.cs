@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour {
     private GameObject retryButtom;
     private Vector3 retryDefaultPosition;
     private Fader fader;
+    private CanvasGroup canvasGroup;
     private bool retring = false;
     private bool showingUI = false;
 
@@ -19,6 +20,7 @@ public class GameOver : MonoBehaviour {
         retryButtom = GameObject.Find("RetryButton");
         retryDefaultPosition = retryButtom.transform.position;
         fader = GetComponent<Fader>();
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
     }
 
     void Update() {
@@ -33,12 +35,12 @@ public class GameOver : MonoBehaviour {
         }
 
         if (showingUI && !fader.IsFadingIn()) {
-            retryButtom.GetComponent<Button>().interactable = true;
+            canvasGroup.blocksRaycasts = true;
         }
         
         if (retring  && !fader.IsFadingOut()) {
             retring = false;
-            retryButtom.GetComponent<Button>().interactable = false;
+            canvasGroup.blocksRaycasts = false;
             gameOverText.transform.position = gameOverDefaultPostion;
             retryButtom.transform.position = retryDefaultPosition;
         }

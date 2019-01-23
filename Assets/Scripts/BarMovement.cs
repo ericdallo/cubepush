@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,5 +21,4 @@ public class BarMovement : MonoBehaviour {
 
 		barBody.MovePosition(barBody.position + movement.normalized * Speed * Time.deltaTime);
 	}
-
 }
